@@ -1,0 +1,98 @@
+# 前端面试题--html篇
+
+## 1. 渐进增强和优雅降级之间的不同？
+
+​	渐进增强 progressive enhancement：针对低版本浏览器进行构建页面，保证最基本的功能，然后再针对高级浏览器进行效果、交互等改进和追加功能达到更好的用户体验。
+
+​	优雅降级 graceful degradation：一开始就构建完整的功能，然后再针对低版本浏览器进行兼容。
+
+区别：优雅降级是从复杂的现状开始，并试图减少用户体验的供给，而渐进增强则是从一个非常基础的，能够起作用的版本开始，并不断扩充，以适应未来环境的需要。降级（功能衰减）意味着往回看；而渐进增强则意味着朝前看，同时保证其根基处于安全地带。
+
+
+
+## 2. 为什么利用多个域名来存储网站资源会更有效？
+
+CDN缓存更方便
+
+突破浏览器并发限制
+
+节约cookie带宽
+
+节约主域名的连接数，优化页面响应速度
+
+防止不必要的安全问题
+
+
+
+## 3. cookies，sessionStorage和localStorage的区别
+
+​	sessionStorage用于本地存储一个会话（session）中的数据，这些数据只有在同一个会话中的页面才能访问并且当会话结束后数据也随之销毁。因此sessionStorage不是一种持久化的本地存储，仅仅是会话级别的存储。   localStorage用于持久化的本地存储，除非主动删除数据，否则数据是永远不会过期的。
+
+web storage和cookie的区别
+
+​	Web Storage的概念和cookie相似，区别是它是为了更大容量存储设计的。Cookie的大小是受限的，并且每次你请求一个新的页面的时候Cookie都会被发送过去，这样无形中浪费了带宽，另外cookie还需要指定作用域，不可以跨域调用。
+
+除此之外，Web Storage拥有setItem,getItem,removeItem,clear等方法，不像cookie需要前端开发者自己封装setCookie，getCookie。但是Cookie也是不可以或缺的：Cookie的作用是与服务器进行交互，作为HTTP规范的一部分而存在 ，而Web Storage仅仅是为了在本地“存储”数据而生。
+
+
+
+## 4. 一个页面上有大量的图片（大型电商网站），加载很慢，你有哪些方法优化这些图片的加载，给用户更好的体验？
+
+​	图片懒加载，在页面上的未可视区域可以添加一个滚动条事件，判断图片位置与浏览器顶端的距离与页面的距离，如果前者小于后者，优先加载。
+
+​	如果为幻灯片、相册等，可以使用图片预加载技术，将当前展示图片的前一张和后一张优先下载。
+
+​	如果图片为css图片，可以使用CSSsprite，SVGsprite，Iconfont、Base64等技术。
+
+​	如果图片过大，可以使用特殊编码的图片，加载时会先加载一张压缩的特别厉害的缩略图，以提高用户体验。
+
+​	如果图片展示区域小于图片的真实大小，则因在服务器端根据业务需要先行进行图片压缩，图片压缩后大小与展示一致。
+
+
+
+## 5.行内元素和块级元素的具体区别是什么？行内元素的padding和margin可设置吗？
+
+块级元素(block)特性：
+
+​	总是独占一行，表现为另起一行开始，而且其后的元素也必须另起一行显示;
+
+​	宽度(width)、高度(height)、内边距(padding)和外边距(margin)都可控制;
+
+内联元素(inline)特性：
+
+​	和相邻的内联元素在同一行;
+
+​	宽度(width)、高度(height)、内边距的top/bottom(padding-top/padding-bottom)和外边距的top/bottom(margin-top/margin-bottom)都不可改变（也就是padding和margin的left和right是可以设置的），就是里面文字或图片的大小。
+
+
+
+## 6.html常见兼容性问题
+
+1.双边距BUG float引起的  使用display
+
+2.3像素问题 使用float引起的 使用dislpay:inline -3px  
+
+3.超链接hover 点击后失效  使用正确的书写顺序 link visited hover active
+
+4.Ie z-index问题 给父级添加position:relative
+
+5.Png 透明 使用js代码 改
+
+6.Min-height 最小高度 ！Important 解决’
+
+7.select 在ie6下遮盖 使用iframe嵌套
+
+8.为什么没有办法定义1px左右的宽度容器（IE6默认的行高造成的，使用over:hidden,zoom:0.08 line-height:1px）
+
+9.IE5-8不支持opacity，解决办法：
+
+.opacity {
+
+​    opacity: 0.4
+
+​    filter: alpha(opacity=60); /* for IE5-7 */
+
+​    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)"; /* for IE 8*/
+
+}
+
