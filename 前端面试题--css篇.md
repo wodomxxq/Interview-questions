@@ -146,3 +146,34 @@ CSS3新增伪类举例：
 }
 ```
 
+
+
+## 5.display:none、visibility:hidden和opacity:0之间的区别
+
+- **空间占据** 
+
+  display:none隐藏后不占据额外空间，它会产生回流和重绘，而visibility:hidden和opacity:0元素虽然隐藏了，但它们仍然占据着空间，它们俩只会引起页面重绘。  
+
+- **子元素继承** 
+
+  display:none不会被子元素继承，但是父元素都不在了，子元素自然也就不会显示了，皮之不存，毛之安附~~
+
+  visibility:hidden 会被子元素继承，可以通过设置子元素visibility:visible 使子元素显示出来
+
+  opacity: 0 也会被子元素继承，但是不能通过设置子元素opacity: 0使其重新显示。
+
+- **事件绑定**
+
+  display:none 的元素都已经不再页面存在了，因此肯定也无法触发它上面绑定的事件；
+
+  visibility:hidden 元素上绑定的事件也无法触发；
+
+  opacity: 0元素上面绑定的事件是可以触发的。
+
+- **过度动画**
+
+  transition对于display肯定是无效的，大家应该都知道；
+
+  transition对于visibility也是无效的；
+
+  transition对于opacity是有效。

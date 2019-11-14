@@ -1,6 +1,6 @@
-# 前端面试题--css篇
+# 前端面试题--js篇
 
-## 1. CSS 选择符有哪些？哪些属性可以继承？优先级算法如何计算？ CSS3新增伪类有那些？
+## 1. JavaScript的数据类型以及在内存中的存放位置？
 
 选择符类别如下：
 
@@ -52,28 +52,15 @@ CSS3新增伪类举例：
 
 ​    :checked，单选框或复选框被选中。
 
-## 2. 什么是Css Hack？ie6,7,8的hack分别是什么？
+## 2. 下面代码的执行结果？
 
 针对不同的浏览器写不同的CSS code的过程，就是CSS hack。示例如下：
 
 ```
-#test {   
-        width:300px;   
-        height:300px;   
-        background-color:blue;      /*firefox*/
-        background-color:red\9;      /*all ie*/
-        background-color:yellow;    /*ie8*/
-        +background-color:pink;        /*ie7*/
-        _background-color:orange;       /*ie6*/   
-     }  
-:root #test { background-color:purple\9; }  /*ie9*/
-@media all and (min-width:0px){ 
- 	#test {background-color:black;} 
-}  /*opera*/
-@media screen and (-webkit-min-device-pixel-ratio:0){
-	#test {background-color:gray;} 
-}   /*chrome and safari*/
-
+var a = 20;
+function () {
+    console.log(a);
+}
 ```
 
 ## 3. **请用Css写一个简单的幻灯片效果页面**
